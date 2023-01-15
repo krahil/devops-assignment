@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: nginx
+          image: assignment-nginx
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80         
+          volumeMounts:
+            - name: shared-volume
+              mountPath: /usr/src/app/
+        - name: react
+          image: assignment-frontend
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: shared-volume
+              mountPath: /usr/src/app/build
+      volumes:
+        - name: shared-volume
+          emptyDir: {}
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  selector:
+    app: frontend
+  ports:
+    - port: 80
+      name: http
+      targetPort: 80
+  type: LoadBalancer
+

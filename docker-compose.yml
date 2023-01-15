@@ -1,0 +1,41 @@
+version: '1.0'
+services:
+  backend:
+    container_name: backend
+    build: 
+      context: ./api
+    ports:
+     - "5000:5000"
+    volumes:
+     - type: volume
+       source: shared-volume-2
+       target: /app
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./sys-stats
+    volumes:
+     - type: volume
+       source: shared-volume-1
+       target: /usr/src/app/build
+  nginx:
+    container_name: server
+    build:
+      context: .
+    ports:
+     - "8080:80"
+    depends_on:
+     - frontend
+     - backend
+    volumes:
+     - type: volume
+       source: shared-volume-1
+       target: /usr/src/app
+     - type: volume
+       source: shared-volume-2
+       target: /app
+volumes:
+  shared-volume-1:
+  shared-volume-2:
+
