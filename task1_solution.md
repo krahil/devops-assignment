@@ -41,3 +41,6 @@ Run the docker compose command being in the top level directory where `docker-co
 ```bash
 docker-compose up --build 
 ```
+
+### Additional comments
+The above application can be containerized using only two containers as well, i.e. one backend and the other one frontend. There, frontend conatiner would handle both react and nginx services.
