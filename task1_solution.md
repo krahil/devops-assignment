@@ -32,7 +32,7 @@ Docker-compose.yaml:
 - Sequence of service is important as web server can only render the app after the frontend is built. Therefore, the dependency of the web server should be taken care.
 - Node ports should be exposed to allow the access of the app from user's machine
 
-### Prerequisites:=
+### Prerequisites
 - docker-compose
 - docker
 
