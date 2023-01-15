@@ -11,7 +11,7 @@ We can deploy the containerized application in multiple ways as following:
  
  We can have a domain name registered using AWS Route 53 (simple policy) which can then forward the request to our application. There is another way to architect the AWS solution here. Instead of running nginx server, we could make use of AWS ALB (Application Load Balancer) to balance the load.
 
-### Prerequisites:
+### Prerequisites
 - We will require AWS account (for sure)
 - Dockerizing our application
 - AWS ECR
