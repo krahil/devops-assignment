@@ -24,8 +24,9 @@ First start the minikube cluster using following command:
 minikube start
 ```
 Above command will start a development kubernetes cluster with one worker node.
-We can then run the deployment as follows:
+Chnage the directory to `kubernetes` and run the deployment as follows:
 ```bash
+cd kubernetes
 kubectl apply -f frontend.yaml
 kubectl apply -f backend.yaml
 ```
